@@ -10,8 +10,13 @@ var makeQueue = function(){
   // Implement the methods below
 
   instance.enqueue = function(value){
+    //sets index to inputted value
     storage[currentKey] = value;
+
+    //so additional values can be enqueued
     currentKey++;
+
+    //updates instance.size
     currentSize++;
   };
 
