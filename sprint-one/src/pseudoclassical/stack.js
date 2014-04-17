@@ -1,25 +1,23 @@
 var Stack = function() {
   // Use an object with numeric keys to store values
-  storage = {};
-  size = 0;
+  this._storage = {};
+  this._size = 0;
 };
-
-  
 
 Stack.prototype.push = function(value){
   //adds value to last index
-  storage[size] = value;
-  size++;
+  this._storage[this._size] = value;
+  this._size++;
 };
 
 Stack.prototype.pop = function(){
-  size && size--;
-  var result = storage[size];
-  delete storage[size];
+  this._size && this._size--;
+  var result = this._storage[this._size];
+  delete this._storage[this._size];
   return result;
 };
 
 Stack.prototype.size = function(){
-  return size;
+  return this._size;
 };
 
