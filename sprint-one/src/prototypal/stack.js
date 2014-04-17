@@ -1,6 +1,5 @@
 var makeStack = function(){
   var instance = Object.create(stackMethods);
-  console.log(stackMethods);
   // Use an object with numeric keys to store values
   instance._storage = {};
   instance._size = 0; // Hint: set an initial value here
