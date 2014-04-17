@@ -1,13 +1,11 @@
 var makeQueue = function(){
-  var instance = {};
+  var instance = Object.create(queueMethods);
 
   // Use an object with numeric keys to store values
     instance._storage = {};
     instance._currentKey = 0;
     instance._adjustedStartingIndex = 0;
     instance._currentSize = 0;
-
-    _.extend(instance, queueMethods);
   // Implement the methods below
   
   return instance;
@@ -15,7 +13,7 @@ var makeQueue = function(){
 
 
 
-var queueMethods = {};
+queueMethods = {};
 queueMethods.enqueue = function(value){
   this._storage[this._currentKey] = value;
   this._currentKey++;
