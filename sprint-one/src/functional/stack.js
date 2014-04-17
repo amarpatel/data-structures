@@ -22,7 +22,7 @@ var makeStack = function(){
     var result = storage[size];
 
     //clears last index
-    delete storage[stack];
+    delete storage[size];
 
     //returns temp container
     return result;
@@ -34,5 +34,3 @@ var makeStack = function(){
 
   return instance;
 };
-
-var stack = makeStack();

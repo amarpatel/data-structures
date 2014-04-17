@@ -40,5 +40,3 @@ var makeQueue = function(){
   };
   return instance;
 };
-
-var queue = makeQueue();
