@@ -1,3 +1,5 @@
+//nested version
+
 var makeLinkedList = function(){
   var list = {};
   list.head = null;
