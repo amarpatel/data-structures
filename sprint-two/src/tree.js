@@ -9,8 +9,7 @@ var makeTree = function(value){
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  var treeInstance = makeTree(value);
-  this.children.push(treeInstance);
+  this.children.push(makeTree(value));
 };
 
 treeMethods.contains = function(target){
