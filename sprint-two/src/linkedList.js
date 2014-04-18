@@ -33,12 +33,14 @@ var makeLinkedList = function(){
 
   list.contains = function(target, node){
     node = node || this.head;
+    
     if (node.value === target) {
       return true;
-    } else {
+    } else if (node.next !== null) {
       return list.contains(target, node.next);
+    } else {
+      return false;
     }
-
   };
 
   return list;
