@@ -4,7 +4,6 @@ describe("hashTable", function() {
   var hashTable;
   var people = [["Steven", "Tyler"], ["George", "Harrison"], ["Mr.", "Doob"], ["Dr.", "Sunshine"], ["John", "Resig"], ["Brendan", "Eich"], ["Alan", "Turing"]];
 
-
   beforeEach(function() {
     hashTable = new HashTable();
   });
@@ -33,7 +32,7 @@ describe("hashTable", function() {
 
   it("should handle hash function collisions", function(){
     expect(window.getIndexBelowMaxForKey).to.be.ok;
-    var v1 = 'val1', v2 = 'val2';
+    var v1 = 'val1', v2 = 'val9';
     hashTable.insert(v1, v1);
     hashTable.insert(v2, v2);
     expect(hashTable.retrieve(v1)).to.equal(v1);
@@ -41,7 +40,7 @@ describe("hashTable", function() {
   });
   
   // (Extra credit! Remove the extra 'x' when you want the following tests to run)
-  xit("should double in size when needed", function() {
+  it("should double in size when needed", function() {
     for (var i = 0; i < people.length; i++){
       var firstName = people[i][0], lastName = people[i][1];
       hashTable.insert(firstName,lastName);
@@ -49,7 +48,7 @@ describe("hashTable", function() {
     expect(hashTable._limit).to.equal(16);
   });
 
-  xit("should halve in size when needed", function() {
+  it("should halve in size when needed", function() {
     for (var i = 0; i < people.length; i++){
       var firstName = people[i][0], lastName = people[i][1];
       hashTable.insert(firstName,lastName);
