@@ -44,4 +44,31 @@ describe("tree", function() {
     assert.isTrue(tree.contains(8));
   });
 
+  it("each node should have a \".parent\" property which refers to the parent node or null when there is no node", function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    assert.isTrue(tree.children[0].parent === tree);
+    assert.isTrue(tree.children[1].children[0].parent === tree.children[1]);
+    expect(tree.parent).to.equal(null);
+  });
+
+  it('should contain a ".removeFromParent" method that disassociates the tree from it\'s parent (in both directions)', function () {
+    expect(typeof tree.removeFromParent).to.equal('function');
+    tree.addChild(5);
+    expect(typeof tree.children[0].removeFromParent).to.equal('function');
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    assert.isTrue(tree.children[0].parent === tree);
+    assert.isTrue(tree.children[1].children[0].parent === tree.children[1]);
+    tree.children[0].removeFromParent();
+    assert.isFalse(tree.contains(5));
+    assert.isFalse(tree.contains(7));
+    assert.isTrue(tree.contains(6));
+    assert.isTrue(tree.contains(8));
+  });
+
+
 });
