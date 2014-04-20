@@ -9,8 +9,8 @@ describe("doublyLinkedList", function() {
   });
 
   it("should have a head and tail", function() {
-    expect(doublyLinkedList).to.have.property('head')
-    expect(doublyLinkedList).to.have.property('tail')
+    expect(doublyLinkedList).to.have.property('head');
+    expect(doublyLinkedList).to.have.property('tail');
   });
 
   it("should have methods named 'addToTail', 'removeHead', and 'contains'", function() {
@@ -52,45 +52,39 @@ describe("doublyLinkedList", function() {
   //new tests for doublyLinkedList
 
   it('should have method named ".addToHead"', function () {
-    // expect(doublyLinkedList)
-  })
+    expect(doublyLinkedList.addToHead).to.be.a('function');
+  });
+  
+  it('should be able to add values to head', function () {
+    expect(doublyLinkedList.head).to.equal(null);
+    doublyLinkedList.addToHead(4);
+    expect(doublyLinkedList.head.value).to.equal(4);
+    doublyLinkedList.addToHead(5);
+    expect(doublyLinkedList.head.value).to.equal(5);
+  });
 
+  it('after second invocation, subsequent invocations of addToHead will set "previous" to previous node', function () {
+    expect(doublyLinkedList.head).to.equal(null);
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    expect(doublyLinkedList.head.next.previous.value).to.equal(5);
+    doublyLinkedList.addToHead(6);
+    expect(doublyLinkedList.head.next.value).to.equal(5);
+    expect(doublyLinkedList.head.next.next.value).to.equal(4);
+    expect(doublyLinkedList.head.next.previous.value).to.equal(6);
+  });
 
+  it('should have a function "removeTail"', function () {
+    expect(doublyLinkedList.removeTail).to.be.a('function');
+  });
 
-
-
-
-
-
-
-  // xit("should have methods named 'addToHead' and 'removeTail'", function() {
-  //   expect(doublyLinkedList.addToHead).to.be.a('function');
-  // });
-
-  // xit("should designate a new head when needed", function(){
-  //   doublyLinkedList.addToHead(4);
-  //   expect(doublyLinkedList.head.value).to.equal(4);
-  //   doublyLinkedList.addToHead(5);
-  //   expect(doublyLinkedList.head.value).to.equal(5);
-  // });
-
-
-  // xit("should have method named 'removeTail'", function() {
-  //   expect(doublyLinkedList.removeTail).to.be.a('function');
-  // });
-
-  // xit("should remove a tail when needed", function(){
-  //   doublyLinkedList.addToTail(4);
-  //   doublyLinkedList.addToTail(5);
-  //   expect(doublyLinkedList.tail.value).to.equal(5);
-  //   doublyLinkedList.addToTail(6);
-  //   doublyLinkedList.removeTail();
-  //   expect(doublyLinkedList.tail.value).to.equal(5);
-  // });
-
-  // xit("each node should have 'previous' property pointing to the node behind ", function(){
-  //   expect(doublyLinkedList.tail.previous).to.be.an('object');
-  //   expect(doublyLinkedList.head.next.next.previous).to.be.an('object');
-  //   expect(doublyLinkedList.head.previous).to.be('null');
-  // });
+  it('should reassign tail as necessary', function () {
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    doublyLinkedList.addToHead(6);
+    expect(doublyLinkedList.tail.value).to.equal(4);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.tail.value).to.equal(5);
+    assert.isFalse(doublyLinkedList.contains(4));
+  });
 });
